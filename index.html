@@ -1,1 +1,349 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <meta name="theme-color" content="#071018">
+  <meta name="description" content="Match Matrix — Cricket Trading & Match Analysis. Join the private community.">
+  <title>Match Matrix — Cricket Trading</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(35, 139, 190, 0.16), transparent 34%),
+        radial-gradient(circle at 50% 90%, rgba(18, 82, 117, 0.14), transparent 35%),
+        #071018;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100dvh;
+      padding: 20px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      position: relative;
+      padding: 25px 20px 20px;
+      border: 1px solid rgba(125, 205, 241, 0.18);
+      border-radius: 26px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20, 38, 49, 0.94),
+          rgba(6, 17, 25, 0.97)
+        );
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.48),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: -110px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(65, 190, 239, 0.18);
+      filter: blur(45px);
+      pointer-events: none;
+    }
+
+    .top-line {
+      width: 48px;
+      height: 3px;
+      margin: 0 auto 19px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #54d6ff, #8be9ff);
+      box-shadow: 0 0 16px rgba(84, 214, 255, 0.55);
+    }
+
+    .logo-wrap {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 14px;
+      border-radius: 24px;
+      padding: 3px;
+      background: linear-gradient(145deg, #8deaff, #216d8c);
+      box-shadow:
+        0 0 30px rgba(67, 194, 238, 0.22),
+        0 12px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 21px;
+      background: #0b1720;
+    }
+
+    .brand {
+      font-family: "Orbitron", sans-serif;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: #8fd8ef;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .headline {
+      font-size: 20px;
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      max-width: 310px;
+      margin: 0 auto;
+      color: #a8b8c1;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin: 19px 0;
+    }
+
+    .feature {
+      padding: 10px 5px;
+      border-radius: 13px;
+      border: 1px solid rgba(150, 211, 235, 0.11);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 10px;
+      color: #eaf9ff;
+      margin-bottom: 3px;
+    }
+
+    .feature span {
+      display: block;
+      font-size: 8px;
+      color: #7f9aa7;
+    }
+
+    .live {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      color: #9eabb1;
+      font-size: 9px;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #48e49b;
+      box-shadow: 0 0 10px rgba(72, 228, 155, 0.8);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.45;
+        transform: scale(0.75);
+      }
+    }
+
+    .cta {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 15px 18px;
+      background: linear-gradient(135deg, #58d7ff, #278db7);
+      color: #041017;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      box-shadow:
+        0 10px 28px rgba(39, 173, 221, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .cta:active {
+      transform: scale(0.97);
+      filter: brightness(0.92);
+    }
+
+    .cta small {
+      display: block;
+      margin-top: 3px;
+      font-size: 9px;
+      font-weight: 600;
+      opacity: 0.72;
+    }
+
+    .footer {
+      margin-top: 13px;
+      color: #61727b;
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    @media (max-height: 650px) {
+      .page {
+        padding: 10px 15px;
+      }
+
+      .card {
+        padding: 17px 17px 14px;
+      }
+
+      .logo-wrap {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 9px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .subtitle {
+        margin-bottom: 12px;
+      }
+
+      .features {
+        margin: 13px 0;
+      }
+
+      .description {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+    <section class="card">
+
+      <div class="top-line"></div>
+
+      <div class="logo-wrap">
+        <img
+          src="logo.png"
+          alt="Match Matrix"
+          class="logo"
+        >
+      </div>
+
+      <h1 class="brand">MATCH MATRIX</h1>
+
+      <div class="subtitle">Cricket Trading • Analysis</div>
+
+      <h2 class="headline">
+        Read The Match.<br>
+        Trade With A Plan.
+      </h2>
+
+      <p class="description">
+        Get structured cricket match analysis, market insights
+        and real-time updates from the Match Matrix community.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <strong>LIVE</strong>
+          <span>Match Updates</span>
+        </div>
+
+        <div class="feature">
+          <strong>SMART</strong>
+          <span>Market Analysis</span>
+        </div>
+
+        <div class="feature">
+          <strong>FOCUSED</strong>
+          <span>Trading Insights</span>
+        </div>
+      </div>
+
+      <div class="live">
+        <span class="dot"></span>
+        Community is active
+      </div>
+
+      <button
+        type="button"
+        class="cta"
+        onclick="window.location.href='https://t.me/+8vMmTt4Zt-U5MTk1';"
+      >
+        JOIN MATCH MATRIX
+        <small>Access the private community →</small>
+      </button>
+
+      <div class="footer">
+        Informational content only. Trading involves risk.
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>
+```
 
